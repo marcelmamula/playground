@@ -24,7 +24,7 @@ sap_vm_provision_calculate_sap_hana_scaleout_standby: 1  # Number of standby nod
 #### Key SAP System variables ####
 sap_system_sid: "B01"  # SAP System ID (SID) (String)
 sap_system_hana_db_sid: "H01"  # SAP HANA Database ID (SID) (String).
-sap_system_hana_db_instance_nr: "90"  # SAP HANA Database instance number (String).
+sap_system_hana_db_instance_nr: "91"  # SAP HANA Database instance number (String).
 sap_system_nwas_abap_ascs_instance_nr: "00"  # SAP NetWeaver ABAP ASCS instance number (String).
 sap_system_nwas_abap_pas_instance_nr: "01"  # SAP NetWeaver ABAP PAS instance number (String).
 
