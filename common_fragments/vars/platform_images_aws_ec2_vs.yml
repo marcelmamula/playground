@@ -39,3 +39,4 @@ sap_vm_provision_aws_ec2_vs_host_os_image_dictionary:
   sles-15-4-sap-ha-byos: "*suse-sles-sap-15-sp4-byos-v202*-hvm-ssd-x86_64*"
   sles-15-5-sap-ha-byos: "*suse-sles-sap-15-sp5-byos-v202*-hvm-ssd-x86_64*"
   sles-15-6-sap-ha-byos: "*suse-sles-sap-15-sp6-byos-v202*-hvm-ssd-x86_64*"
+  sles-15-7-sap-ha-byos: "*suse-sles-sap-15-sp7-byos-v202*-hvm-ssd-x86_64*"
