@@ -75,7 +75,7 @@ sap_software_install_dictionary:
       - 'S4CORE108_INST_EXPORT_20.zip'
       - 'S4CORE108_INST_EXPORT_21.zip'
       - 'S4CORE108_INST_EXPORT_22.zip'
-      - '19118000000000008988'
+      - 'S4CORE108_INST_EXPORT_23.zip'
       - 'S4CORE108_INST_EXPORT_24.zip'
       - 'S4CORE108_INST_EXPORT_25.zip'
       - 'S4CORE108_INST_EXPORT_26.zip'
@@ -121,7 +121,7 @@ sap_software_install_dictionary:
       - 'S4CORE108_INST_EXPORT_20.zip'
       - 'S4CORE108_INST_EXPORT_21.zip'
       - 'S4CORE108_INST_EXPORT_22.zip'
-      - '19118000000000008988'
+      - 'S4CORE108_INST_EXPORT_23.zip'
       - 'S4CORE108_INST_EXPORT_24.zip'
       - 'S4CORE108_INST_EXPORT_25.zip'
       - 'S4CORE108_INST_EXPORT_26.zip'
@@ -326,7 +326,7 @@ sap_software_install_dictionary:
       - 'S4CORE107_INST_EXPORT_10.zip'
       - 'S4CORE107_INST_EXPORT_11.zip'
       - 'S4CORE107_INST_EXPORT_12.zip'
-      - '19118000000000007795'
+      - 'S4CORE107_INST_EXPORT_13.zip'
       - 'S4CORE107_INST_EXPORT_14.zip'
       - 'S4CORE107_INST_EXPORT_15.zip'
       - 'S4CORE107_INST_EXPORT_16.zip'
@@ -374,7 +374,7 @@ sap_software_install_dictionary:
       - 'S4CORE107_INST_EXPORT_10.zip'
       - 'S4CORE107_INST_EXPORT_11.zip'
       - 'S4CORE107_INST_EXPORT_12.zip'
-      - '19118000000000007795'
+      - 'S4CORE107_INST_EXPORT_13.zip'
       - 'S4CORE107_INST_EXPORT_14.zip'
       - 'S4CORE107_INST_EXPORT_15.zip'
       - 'S4CORE107_INST_EXPORT_16.zip'
@@ -589,9 +589,9 @@ sap_software_install_dictionary:
       - 'S4CORE106_INST_EXPORT_9.zip'
       - 'S4CORE106_INST_EXPORT_10.zip'
       - 'S4CORE106_INST_EXPORT_11.zip'
-      - '19118000000000006085'
+      - 'S4CORE106_INST_EXPORT_12.zip'
       - 'S4CORE106_INST_EXPORT_13.zip'
-      - '19118000000000006087'
+      - 'S4CORE106_INST_EXPORT_14.zip'
       - 'S4CORE106_INST_EXPORT_15.zip'
       - 'S4CORE106_INST_EXPORT_16.zip'
       - 'S4CORE106_INST_EXPORT_17.zip'
@@ -631,9 +631,9 @@ sap_software_install_dictionary:
       - 'S4CORE106_INST_EXPORT_9.zip'
       - 'S4CORE106_INST_EXPORT_10.zip'
       - 'S4CORE106_INST_EXPORT_11.zip'
-      - '19118000000000006085'
+      - 'S4CORE106_INST_EXPORT_12.zip'
       - 'S4CORE106_INST_EXPORT_13.zip'
-      - '19118000000000006087'
+      - 'S4CORE106_INST_EXPORT_14.zip'
       - 'S4CORE106_INST_EXPORT_15.zip'
       - 'S4CORE106_INST_EXPORT_16.zip'
       - 'S4CORE106_INST_EXPORT_17.zip'
@@ -1177,9 +1177,10 @@ sap_vm_provision_aws_ec2_vs_host_specifications_dictionary:
       sap_storage_setup_sid: "{{ sap_system_sid }}"
       sap_storage_setup_nwas_abap_ascs_instance_nr: "{{ sap_system_nwas_abap_ascs_instance_nr }}"
 
-      # hana_primary, hana_secondary, nwas_abap_ascs, nwas_abap_ers, nwas_abap_pas, nwas_abap_aas, nwas_java_scs, nwas_java_ers
+      # Both ASCS and ERS NFS have to be present if Simple Mount is used
       sap_storage_setup_host_type:
         - nwas_abap_ascs
+        - nwas_abap_ers
 
       storage_definition:
 
@@ -1223,8 +1224,9 @@ sap_vm_provision_aws_ec2_vs_host_specifications_dictionary:
       sap_storage_setup_sid: "{{ sap_system_sid }}"
       sap_storage_setup_nwas_abap_ers_instance_nr: "{{ sap_system_nwas_abap_ers_instance_nr }}"
 
-      # hana_primary, hana_secondary, nwas_abap_ascs, nwas_abap_ers, nwas_abap_pas, nwas_abap_aas, nwas_java_scs, nwas_java_ers
+      # Both ASCS and ERS NFS have to be present if Simple Mount is used
       sap_storage_setup_host_type:
+        - nwas_abap_ascs
         - nwas_abap_ers
 
       storage_definition:
@@ -1528,9 +1530,10 @@ sap_vm_provision_gcp_ce_vm_host_specifications_dictionary:
       sap_storage_setup_sid: "{{ sap_system_sid }}"
       sap_storage_setup_nwas_abap_ascs_instance_nr: "{{ sap_system_nwas_abap_ascs_instance_nr }}"
 
-      # hana_primary, hana_secondary, nwas_abap_ascs, nwas_abap_ers, nwas_abap_pas, nwas_abap_aas, nwas_java_scs, nwas_java_ers
+      # Both ASCS and ERS NFS have to be present if Simple Mount is used
       sap_storage_setup_host_type:
         - nwas_abap_ascs
+        - nwas_abap_ers
 
       storage_definition:
 
@@ -1620,9 +1623,10 @@ sap_vm_provision_gcp_ce_vm_host_specifications_dictionary:
       sap_storage_setup_sid: "{{ sap_system_sid }}"
       sap_storage_setup_nwas_abap_pas_instance_nr: "{{ sap_system_nwas_abap_pas_instance_nr }}"
 
-      # hana_primary, hana_secondary, nwas_abap_ascs, nwas_abap_ers, nwas_abap_pas, nwas_abap_aas, nwas_java_scs, nwas_java_ers
+      # Both ASCS and ERS NFS have to be present if Simple Mount is used
       sap_storage_setup_host_type:
-        - nwas_abap_pas
+        - nwas_abap_ascs
+        - nwas_abap_ers
 
       storage_definition:
 
@@ -1898,9 +1902,10 @@ sap_vm_provision_ibmcloud_powervs_host_specifications_dictionary:
       sap_storage_setup_sid: "{{ sap_system_sid }}"
       sap_storage_setup_nwas_abap_ascs_instance_nr: "{{ sap_system_nwas_abap_ascs_instance_nr }}"
 
-      # hana_primary, hana_secondary, nwas_abap_ascs, nwas_abap_ers, nwas_abap_pas, nwas_abap_aas, nwas_java_scs, nwas_java_ers
+      # Both ASCS and ERS NFS have to be present if Simple Mount is used
       sap_storage_setup_host_type:
         - nwas_abap_ascs
+        - nwas_abap_ers
 
       storage_definition:
 
@@ -1946,8 +1951,9 @@ sap_vm_provision_ibmcloud_powervs_host_specifications_dictionary:
       sap_storage_setup_sid: "{{ sap_system_sid }}"
       sap_storage_setup_nwas_abap_ers_instance_nr: "{{ sap_system_nwas_abap_ers_instance_nr }}"
 
-      # hana_primary, hana_secondary, nwas_abap_ascs, nwas_abap_ers, nwas_abap_pas, nwas_abap_aas, nwas_java_scs, nwas_java_ers
+      # Both ASCS and ERS NFS have to be present if Simple Mount is used
       sap_storage_setup_host_type:
+        - nwas_abap_ascs
         - nwas_abap_ers
 
       storage_definition:
@@ -2225,9 +2231,10 @@ sap_vm_provision_ibmcloud_vs_host_specifications_dictionary:
       sap_storage_setup_sid: "{{ sap_system_sid }}"
       sap_storage_setup_nwas_abap_ascs_instance_nr: "{{ sap_system_nwas_abap_ascs_instance_nr }}"
 
-      # hana_primary, hana_secondary, nwas_abap_ascs, nwas_abap_ers, nwas_abap_pas, nwas_abap_aas, nwas_java_scs, nwas_java_ers
+      # Both ASCS and ERS NFS have to be present if Simple Mount is used
       sap_storage_setup_host_type:
         - nwas_abap_ascs
+        - nwas_abap_ers
 
       storage_definition:
 
@@ -2271,8 +2278,9 @@ sap_vm_provision_ibmcloud_vs_host_specifications_dictionary:
       sap_storage_setup_sid: "{{ sap_system_sid }}"
       sap_storage_setup_nwas_abap_ers_instance_nr: "{{ sap_system_nwas_abap_ers_instance_nr }}"
 
-      # hana_primary, hana_secondary, nwas_abap_ascs, nwas_abap_ers, nwas_abap_pas, nwas_abap_aas, nwas_java_scs, nwas_java_ers
+      # Both ASCS and ERS NFS have to be present if Simple Mount is used
       sap_storage_setup_host_type:
+        - nwas_abap_ascs
         - nwas_abap_ers
 
       storage_definition:
@@ -2547,9 +2555,10 @@ sap_vm_provision_ibmpowervm_vm_host_specifications_dictionary:
       sap_storage_setup_sid: "{{ sap_system_sid }}"
       sap_storage_setup_nwas_abap_ascs_instance_nr: "{{ sap_system_nwas_abap_ascs_instance_nr }}"
 
-      # hana_primary, hana_secondary, nwas_abap_ascs, nwas_abap_ers, nwas_abap_pas, nwas_abap_aas, nwas_java_scs, nwas_java_ers
+      # Both ASCS and ERS NFS have to be present if Simple Mount is used
       sap_storage_setup_host_type:
         - nwas_abap_ascs
+        - nwas_abap_ers
 
       storage_definition:
 
@@ -2595,8 +2604,9 @@ sap_vm_provision_ibmpowervm_vm_host_specifications_dictionary:
       sap_storage_setup_sid: "{{ sap_system_sid }}"
       sap_storage_setup_nwas_abap_ers_instance_nr: "{{ sap_system_nwas_abap_ers_instance_nr }}"
 
-      # hana_primary, hana_secondary, nwas_abap_ascs, nwas_abap_ers, nwas_abap_pas, nwas_abap_aas, nwas_java_scs, nwas_java_ers
+      # Both ASCS and ERS NFS have to be present if Simple Mount is used
       sap_storage_setup_host_type:
+        - nwas_abap_ascs
         - nwas_abap_ers
 
       storage_definition:
@@ -2852,9 +2862,10 @@ sap_vm_provision_msazure_vm_host_specifications_dictionary:
       sap_storage_setup_sid: "{{ sap_system_sid }}"
       sap_storage_setup_nwas_abap_ascs_instance_nr: "{{ sap_system_nwas_abap_ascs_instance_nr }}"
 
-      # hana_primary, hana_secondary, nwas_abap_ascs, nwas_abap_ers, nwas_abap_pas, nwas_abap_aas, nwas_java_scs, nwas_java_ers
+      # Both ASCS and ERS NFS have to be present if Simple Mount is used
       sap_storage_setup_host_type:
         - nwas_abap_ascs
+        - nwas_abap_ers
 
       storage_definition:
 
@@ -2898,8 +2909,9 @@ sap_vm_provision_msazure_vm_host_specifications_dictionary:
       sap_storage_setup_sid: "{{ sap_system_sid }}"
       sap_storage_setup_nwas_abap_ers_instance_nr: "{{ sap_system_nwas_abap_ers_instance_nr }}"
 
-      # hana_primary, hana_secondary, nwas_abap_ascs, nwas_abap_ers, nwas_abap_pas, nwas_abap_aas, nwas_java_scs, nwas_java_ers
+      # Both ASCS and ERS NFS have to be present if Simple Mount is used
       sap_storage_setup_host_type:
+        - nwas_abap_ascs
         - nwas_abap_ers
 
       storage_definition:
@@ -3335,9 +3347,10 @@ sap_vm_provision_ovirt_vm_host_specifications_dictionary:
       sap_storage_setup_sid: "{{ sap_system_sid }}"
       sap_storage_setup_nwas_abap_ascs_instance_nr: "{{ sap_system_nwas_abap_ascs_instance_nr }}"
 
-      # hana_primary, hana_secondary, nwas_abap_ascs, nwas_abap_ers, nwas_abap_pas, nwas_abap_aas, nwas_java_scs, nwas_java_ers
+      # Both ASCS and ERS NFS have to be present if Simple Mount is used
       sap_storage_setup_host_type:
         - nwas_abap_ascs
+        - nwas_abap_ers
 
       storage_definition:
 
@@ -3382,8 +3395,9 @@ sap_vm_provision_ovirt_vm_host_specifications_dictionary:
       sap_storage_setup_sid: "{{ sap_system_sid }}"
       sap_storage_setup_nwas_abap_ers_instance_nr: "{{ sap_system_nwas_abap_ers_instance_nr }}"
 
-      # hana_primary, hana_secondary, nwas_abap_ascs, nwas_abap_ers, nwas_abap_pas, nwas_abap_aas, nwas_java_scs, nwas_java_ers
+      # Both ASCS and ERS NFS have to be present if Simple Mount is used
       sap_storage_setup_host_type:
+        - nwas_abap_ascs
         - nwas_abap_ers
 
       storage_definition:
@@ -3638,9 +3652,10 @@ sap_vm_provision_vmware_vm_host_specifications_dictionary:
       sap_storage_setup_sid: "{{ sap_system_sid }}"
       sap_storage_setup_nwas_abap_ascs_instance_nr: "{{ sap_system_nwas_abap_ascs_instance_nr }}"
 
-      # hana_primary, hana_secondary, nwas_abap_ascs, nwas_abap_ers, nwas_abap_pas, nwas_abap_aas, nwas_java_scs, nwas_java_ers
+      # Both ASCS and ERS NFS have to be present if Simple Mount is used
       sap_storage_setup_host_type:
         - nwas_abap_ascs
+        - nwas_abap_ers
 
       storage_definition:
 
@@ -3688,9 +3703,10 @@ sap_vm_provision_vmware_vm_host_specifications_dictionary:
       sap_storage_setup_sid: "{{ sap_system_sid }}"
       sap_storage_setup_nwas_abap_pas_instance_nr: "{{ sap_system_nwas_abap_pas_instance_nr }}"
 
-      # hana_primary, hana_secondary, nwas_abap_ascs, nwas_abap_ers, nwas_abap_pas, nwas_abap_aas, nwas_java_scs, nwas_java_ers
+      # Both ASCS and ERS NFS have to be present if Simple Mount is used
       sap_storage_setup_host_type:
-        - nwas_abap_pas
+        - nwas_abap_ascs
+        - nwas_abap_ers
 
       storage_definition:
 

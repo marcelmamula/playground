@@ -170,8 +170,9 @@ sap_software_install_dictionary:
       - 'BW4HANA400_INST_EXPORT_4.zip'
       - 'BW4HANA400_INST_EXPORT_5.zip'
       - 'BW4HANA400_INST_EXPORT_6.zip'
-      - '19118000000000009032'
+      - 'BW4HANA400_INST_EXPORT_7.zip'
       - 'BW4HANA400_INST_EXPORT_8.zip'
+      - 'BW4HANA400_INST_EXPORT_9.zip'
     #  - 'BW4HANA400_NW_LANG_EN.SAR'
 
     softwarecenter_search_list_ppc64le:
@@ -192,8 +193,9 @@ sap_software_install_dictionary:
       - 'BW4HANA400_INST_EXPORT_4.zip'
       - 'BW4HANA400_INST_EXPORT_5.zip'
       - 'BW4HANA400_INST_EXPORT_6.zip'
-      - '19118000000000009032'
+      - 'BW4HANA400_INST_EXPORT_7.zip'
       - 'BW4HANA400_INST_EXPORT_8.zip'
+      - 'BW4HANA400_INST_EXPORT_9.zip'
     #  - 'BW4HANA400_NW_LANG_EN.SAR'
 
     software_files_wildcard_list:
