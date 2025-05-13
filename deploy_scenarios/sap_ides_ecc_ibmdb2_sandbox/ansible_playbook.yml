@@ -183,7 +183,12 @@
           - mksh
           - pam-devel
           - "{{ ('libstdc++' if ansible_os_family == 'RedHat' else 'libstdc++6' if ansible_os_family == 'Suse') }}"
+          - "{{ ('libaio' if ansible_os_family == 'RedHat' else 'libaio1' if ansible_os_family == 'Suse') }}"
+          - "{{ 'pam-devel-32bit' if ansible_os_family == 'Suse' else omit }}"
+          - "{{ 'libstdc++6-32bit' if ansible_os_family == 'Suse' else omit }}"
           - "{{ 'system-user-bin' if ansible_os_family == 'Suse' else omit }}"
+          - "{{ 'net-tools-deprecated' if ansible_os_family == 'Suse' else omit }}"
+          - "{{ 'binutils' if ansible_os_family == 'Suse' else omit }}"
         state: present
 
     - name: Ensure rwx permissions for IBM DB2 unpack directory
