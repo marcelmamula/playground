@@ -176,6 +176,11 @@
         sap_install_media_detect_db_client: "ibmdb2"
         sap_install_media_detect_export: "sapecc"
 
+    - name: Register legacy module for DB2 (SLES 15)
+      ansible.builtin.command:
+        cmd: "{{ 'SUSEConnect -p sle-module-legacy/' ~ ansible_distribution_version ~ '/x86_64' }}"
+      when: ansible_os_family == 'Suse' and ansible_distribution_major_version == "15"
+
     # Package 'net-tools-deprecated' requires module 'sle-module-legacy' on SLES 15
     - name: Install Korn Shell (KSH) and other dependencies for IBM DB2 LUW
       ansible.builtin.package:
