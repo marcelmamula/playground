@@ -210,13 +210,13 @@
   block:
     - name: Check if interactive task file is available - SAP AnyDB - HA
       ansible.builtin.stat:
-        path: "../../common_fragments/tasks/interactive/db_anydb_ha.yml"
+        path: "optional/interactive/db_anydb_ha.yml"
       register: sap_playbook_interactive_tasks_anydb_availability
       ignore_errors: true
 
     - name: Execute interactive task file - SAP AnyDB - HA
       ansible.builtin.include_tasks:
-        file: "../../common_fragments/tasks/interactive/db_anydb_ha.yml"
+        file: "optional/interactive/db_anydb_ha.yml"
       when: sap_playbook_interactive_tasks_anydb_availability.stat.exists
 
     - name: Skip if interactive file was not found - SAP AnyDB - HA
