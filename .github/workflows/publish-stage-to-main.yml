@@ -34,7 +34,10 @@ jobs:
         working-directory: repo_playbooks_stage
         run: |
           shopt -s nullglob  # Ensures that empty results are empty
-          
+
+          # Update path in interactive tasks
+          sed -i 's/..\/..\/common_fragments\/tasks\//optional\//' ./common_fragments/tasks/interactive/*.yml ./common_fragments/tasks/interactive/*/*.yml
+
           # Loop through all deploy_scenarios
           for dir in ./deploy_scenarios/*; do
             # check if there are base files present, identifying reworked scenario
@@ -44,8 +47,8 @@ jobs:
               # Copy tasks
               cp -r ./common_fragments/tasks/* $dir/optional/
 
-              # Update path to copied tasks
-              sed -i 's/..\/..\/common_fragments\/tasks\//optional\//' $dir/ansible_playbook.yml $dir/optional/interactive/*.yml
+              # Update path to interactive tasks in playbooks
+              sed -i 's/..\/..\/common_fragments\/tasks\//optional\//' $dir/ansible_playbook.yml
 
               # Copy ansible_requirements
               cp ./common_fragments/ansible_requirements.yml $dir/
