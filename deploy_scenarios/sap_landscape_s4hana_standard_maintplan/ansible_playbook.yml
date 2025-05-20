@@ -20,13 +20,13 @@
       block:
         - name: Check if interactive tasks are available
           ansible.builtin.stat:
-            path: optional/interactive/main.yml
+            path: ../../common_fragments/tasks/interactive/main.yml
           register: sap_playbook_interactive_tasks_availability
           ignore_errors: true
 
         - name: Execute collection of interactive inputs
           ansible.builtin.include_tasks:
-            file: optional/interactive/main.yml
+            file: ../../common_fragments/tasks/interactive/main.yml
           when: sap_playbook_interactive_tasks_availability.stat.exists
 
 
