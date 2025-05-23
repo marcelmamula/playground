@@ -389,9 +389,11 @@ sap_vm_provision_aws_ec2_vs_host_specifications_dictionary:
       disable_ip_anti_spoofing: true
 
       sap_storage_setup_sid: "{{ sap_system_sid }}"
-      sap_storage_setup_nwas_abap_ascs_instance_nr: "{{ sap_system_nwas_abap_ascs_instance_nr }}"
 
-      # Both ASCS and ERS NFS have to be present if Simple Mount is used
+      # ASCS and ERS have to be present for Simple Mount cluster. 
+      sap_storage_setup_nwas_abap_ascs_instance_nr: "{{ sap_system_nwas_abap_ascs_instance_nr }}"
+      sap_storage_setup_nwas_abap_ers_instance_nr: "{{ sap_system_nwas_abap_ers_instance_nr }}"
+
       sap_storage_setup_host_type:
         - nwas_abap_ascs
         - nwas_abap_ers
@@ -436,9 +438,11 @@ sap_vm_provision_aws_ec2_vs_host_specifications_dictionary:
       disable_ip_anti_spoofing: true
 
       sap_storage_setup_sid: "{{ sap_system_sid }}"
+
+      # ASCS and ERS have to be present for Simple Mount cluster. 
+      sap_storage_setup_nwas_abap_ascs_instance_nr: "{{ sap_system_nwas_abap_ascs_instance_nr }}"
       sap_storage_setup_nwas_abap_ers_instance_nr: "{{ sap_system_nwas_abap_ers_instance_nr }}"
 
-      # Both ASCS and ERS NFS have to be present if Simple Mount is used
       sap_storage_setup_host_type:
         - nwas_abap_ascs
         - nwas_abap_ers
@@ -746,9 +750,11 @@ sap_vm_provision_gcp_ce_vm_host_specifications_dictionary:
       disable_ip_anti_spoofing: true
 
       sap_storage_setup_sid: "{{ sap_system_sid }}"
-      sap_storage_setup_nwas_abap_ascs_instance_nr: "{{ sap_system_nwas_abap_ascs_instance_nr }}"
 
-      # Both ASCS and ERS NFS have to be present if Simple Mount is used
+      # ASCS and ERS have to be present for Simple Mount cluster. 
+      sap_storage_setup_nwas_abap_ascs_instance_nr: "{{ sap_system_nwas_abap_ascs_instance_nr }}"
+      sap_storage_setup_nwas_abap_ers_instance_nr: "{{ sap_system_nwas_abap_ers_instance_nr }}"
+
       sap_storage_setup_host_type:
         - nwas_abap_ascs
         - nwas_abap_ers
@@ -795,9 +801,11 @@ sap_vm_provision_gcp_ce_vm_host_specifications_dictionary:
       disable_ip_anti_spoofing: true
 
       sap_storage_setup_sid: "{{ sap_system_sid }}"
+
+      # ASCS and ERS have to be present for Simple Mount cluster. 
+      sap_storage_setup_nwas_abap_ascs_instance_nr: "{{ sap_system_nwas_abap_ascs_instance_nr }}"
       sap_storage_setup_nwas_abap_ers_instance_nr: "{{ sap_system_nwas_abap_ers_instance_nr }}"
 
-      # Both ASCS and ERS NFS have to be present if Simple Mount is used
       sap_storage_setup_host_type:
         - nwas_abap_ascs
         - nwas_abap_ers
@@ -1129,9 +1137,11 @@ sap_vm_provision_ibmcloud_vs_host_specifications_dictionary:
       disable_ip_anti_spoofing: true
 
       sap_storage_setup_sid: "{{ sap_system_sid }}"
-      sap_storage_setup_nwas_abap_ascs_instance_nr: "{{ sap_system_nwas_abap_ascs_instance_nr }}"
 
-      # Both ASCS and ERS NFS have to be present if Simple Mount is used
+      # ASCS and ERS have to be present for Simple Mount cluster. 
+      sap_storage_setup_nwas_abap_ascs_instance_nr: "{{ sap_system_nwas_abap_ascs_instance_nr }}"
+      sap_storage_setup_nwas_abap_ers_instance_nr: "{{ sap_system_nwas_abap_ers_instance_nr }}"
+
       sap_storage_setup_host_type:
         - nwas_abap_ascs
         - nwas_abap_ers
@@ -1178,9 +1188,11 @@ sap_vm_provision_ibmcloud_vs_host_specifications_dictionary:
       disable_ip_anti_spoofing: true
 
       sap_storage_setup_sid: "{{ sap_system_sid }}"
+
+      # ASCS and ERS have to be present for Simple Mount cluster. 
+      sap_storage_setup_nwas_abap_ascs_instance_nr: "{{ sap_system_nwas_abap_ascs_instance_nr }}"
       sap_storage_setup_nwas_abap_ers_instance_nr: "{{ sap_system_nwas_abap_ers_instance_nr }}"
 
-      # Both ASCS and ERS NFS have to be present if Simple Mount is used
       sap_storage_setup_host_type:
         - nwas_abap_ascs
         - nwas_abap_ers
@@ -1485,9 +1497,11 @@ sap_vm_provision_msazure_vm_host_specifications_dictionary:
       disable_ip_anti_spoofing: true
 
       sap_storage_setup_sid: "{{ sap_system_sid }}"
-      sap_storage_setup_nwas_abap_ascs_instance_nr: "{{ sap_system_nwas_abap_ascs_instance_nr }}"
 
-      # Both ASCS and ERS NFS have to be present if Simple Mount is used
+      # ASCS and ERS have to be present for Simple Mount cluster. 
+      sap_storage_setup_nwas_abap_ascs_instance_nr: "{{ sap_system_nwas_abap_ascs_instance_nr }}"
+      sap_storage_setup_nwas_abap_ers_instance_nr: "{{ sap_system_nwas_abap_ers_instance_nr }}"
+
       sap_storage_setup_host_type:
         - nwas_abap_ascs
         - nwas_abap_ers
@@ -1533,9 +1547,11 @@ sap_vm_provision_msazure_vm_host_specifications_dictionary:
       disable_ip_anti_spoofing: true
 
       sap_storage_setup_sid: "{{ sap_system_sid }}"
+
+      # ASCS and ERS have to be present for Simple Mount cluster. 
+      sap_storage_setup_nwas_abap_ascs_instance_nr: "{{ sap_system_nwas_abap_ascs_instance_nr }}"
       sap_storage_setup_nwas_abap_ers_instance_nr: "{{ sap_system_nwas_abap_ers_instance_nr }}"
 
-      # Both ASCS and ERS NFS have to be present if Simple Mount is used
       sap_storage_setup_host_type:
         - nwas_abap_ascs
         - nwas_abap_ers
