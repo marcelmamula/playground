@@ -28,3 +28,5 @@ sap_vm_provision_gcp_ce_vm_host_os_image: "ENTER_STRING_VALUE_HERE"
 # sap_vm_provision_resource_prefix: "ENTER_STRING_VALUE_HERE"
 # sap_vm_provision_bastion_os_image: "ENTER_STRING_VALUE_HERE"
 # sap_vm_provision_terraform_work_dir_path: "/tmp/tf1"
+
+new_variable: value
