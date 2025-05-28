@@ -135,7 +135,7 @@ jobs:
       - name: Synchronize main with transformed stage
         run: |
           rsync --human-readable --itemize-changes --archive --delete --exclude '.git' repo_playbooks_stage/ repo_playbooks_main/ > rsync.log
-          cat rsync.log | grep -v '^>[df]\.\.t\.\.\.\.\.\.'
+          cat rsync.log | grep -v '^>[df]\.\.t\.\.\.\.\.\.' | grep -v '^[df]\.\.t\.\.\.\.\.\.'
 
       - name: Check for changes
         working-directory: repo_playbooks_main
