@@ -134,8 +134,8 @@ jobs:
 
       - name: Synchronize main with transformed stage
         run: |
-          rsync --archive --delete --exclude '.git' repo_playbooks_stage/ repo_playbooks_main/
-
+          rsync --progress --archive --delete --exclude '.git' repo_playbooks_stage/ repo_playbooks_main/ | tee rsync.log
+          cat rsync.log
 
       - name: Check for changes
         working-directory: repo_playbooks_main
@@ -152,8 +152,11 @@ jobs:
         working-directory: repo_playbooks_main
         if: steps.check_changes.outputs.has_changes == 'true'
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          PR_AUTHOR_NAME="${{ github.event.pull_request.user.login }}"
+          PR_AUTHOR_EMAIL="${{ github.event.pull_request.user.id }}+${PR_AUTHOR_NAME}@users.noreply.github.com" # Construct a no-reply email
+          git config user.name "$PR_AUTHOR_NAME"
+          git config user.email "$PR_AUTHOR_EMAIL"
+
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
             PR_NUMBER=$(echo ${{ github.event.pull_request.number }})
           else
