@@ -18,19 +18,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Generate GitHub App token using a dedicated action
+      - name: Generate GitHub App token
+        id: generate_token
+        uses: tibdex/github-app-token@v2
+        with:
+          app_id: 1337902 # Replace with your GitHub App ID
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
       - name: Checkout branch stage
         uses: actions/checkout@v4
         with:
           path: repo_playbooks_stage
           ref: stage
-          token: ${{ secrets.APP_PRIVATE_KEY }}
+          token: ${{ steps.generate_token.outputs.token }}
 
       - name: Checkout branch main
         uses: actions/checkout@v4
         with:
           path: repo_playbooks_main
           ref: main
-          token: ${{ secrets.APP_PRIVATE_KEY }}
+          token: ${{ steps.generate_token.outputs.token }}
 
       - name: Remove internal scenarios from publishing
         working-directory: repo_playbooks_stage
@@ -182,16 +190,6 @@ jobs:
             PR_NUMBER="manual"
           fi
           git commit -m "Merge changes from stage to main branch (PR #$PR_NUMBER)."
-
-      # Generate GitHub App token using a dedicated action
-      - name: Generate GitHub App token
-        if: steps.check_changes.outputs.has_changes == 'true'
-        id: generate_token
-        uses: tibdex/github-app-token@v2
-        with:
-          app_id: 1337902 # Replace with your GitHub App ID
-          private_key: ${{ secrets.APP_PRIVATE_KEY }}
-
 
       - name: Push changes
         working-directory: repo_playbooks_main
