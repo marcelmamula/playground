@@ -134,34 +134,9 @@ jobs:
 
       - name: Synchronize main with transformed stage
         run: |
-          # rsync --human-readable --itemize-changes --archive --delete --exclude '.git' repo_playbooks_stage/ repo_playbooks_main/ > rsync.log
-          # cat rsync.log | grep -v '^>[df]\.\.t\.\.\.\.\.\.' | grep -v '^.[df]\.\.t\.\.\.\.\.\.'
-
-          # Run rsync and redirect its output (stdout and stderr) to rsync.log
-          # We use a subshell to capture the exit code of rsync BEFORE
-          # we prevent the script from exiting immediately with || true.
-          (rsync --human-readable --itemize-changes --archive --delete --exclude '.git' repo_playbooks_stage/ repo_playbooks_main/ > rsync.log 2>&1)
-          
-          # Capture the exit code of the rsync command from the subshell
-          # This will be the actual exit code of rsync.
-          RSYNC_EXIT_CODE=$?
-          
-          echo "--- rsync.log content (full) ---"
-          # Display the full rsync.log content
-          cat rsync.log
-          
-          echo "--- rsync.log content (filtered) ---"
-          # Display the filtered rsync.log content as you had it
-          cat rsync.log | grep -v '^>[df]\.\.t\.\.\.\.\.\.' | grep -v '^.[df]\.\.t\.\.\.\.\.\.'
-          
-          echo "--- rsync command finished with exit code $RSYNC_EXIT_CODE ---"
-          
-          # If rsync failed (exit code is not 0), then exit the step with that code.
-          # This will cause the GitHub Action step to fail AFTER the logs have been displayed.
-          if [ $RSYNC_EXIT_CODE -ne 0 ]; then
-            echo "Error: rsync failed! Please review the logs above for detailed error messages."
-            exit $RSYNC_EXIT_CODE
-          fi
+          rsync --human-readable --itemize-changes --archive --delete --exclude '.git' repo_playbooks_stage/ repo_playbooks_main/ > rsync.log
+          # cat rsync.log | grep -v '^>[df]\.\.t\.\.\.\.\.\.' | grep -v '^.[df]\.\.t\.\.\.\.\.\.' || true
+          cat rsync.log | grep -v '^[>.][df]\.\.t\.\.\.\.\.\.' || true
 
       - name: Check for changes
         working-directory: repo_playbooks_main
