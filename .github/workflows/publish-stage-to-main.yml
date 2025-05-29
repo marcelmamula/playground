@@ -135,7 +135,7 @@ jobs:
       - name: Synchronize main with transformed stage
         run: |
           rsync --human-readable --itemize-changes --archive --delete --exclude '.git' repo_playbooks_stage/ repo_playbooks_main/ > rsync.log
-          # cat rsync.log | grep -v '^>[df]\.\.t\.\.\.\.\.\.' | grep -v '^.[df]\.\.t\.\.\.\.\.\.' || true
+          echo "--- rsync.log content (filtered) ---"
           cat rsync.log | grep -v '^[>.][df]\.\.t\.\.\.\.\.\.' || true
 
       - name: Check for changes
@@ -144,8 +144,10 @@ jobs:
         run: |
           git add .
           if [[ -n "$(git status --porcelain)" ]]; then
+            echo "Git changes detected. Proceeding with subsequent steps."
             echo "::set-output name=has_changes::true"
           else
+            echo "No Git changes detected. Skipping subsequent steps."
             echo "::set-output name=has_changes::false"
           fi
 
