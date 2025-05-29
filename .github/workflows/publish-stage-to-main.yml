@@ -137,33 +137,31 @@ jobs:
           # rsync --human-readable --itemize-changes --archive --delete --exclude '.git' repo_playbooks_stage/ repo_playbooks_main/ > rsync.log
           # cat rsync.log | grep -v '^>[df]\.\.t\.\.\.\.\.\.' | grep -v '^.[df]\.\.t\.\.\.\.\.\.'
 
-          # 1. Ensure pipeline failure (good practice for safety)
-          set -o pipefail
+          # Run rsync and redirect its output (stdout and stderr) to rsync.log
+          # We use a subshell to capture the exit code of rsync BEFORE
+          # we prevent the script from exiting immediately with || true.
+          (rsync --human-readable --itemize-changes --archive --delete --exclude '.git' repo_playbooks_stage/ repo_playbooks_main/ > rsync.log 2>&1)
           
-          # 2. Execute rsync, capturing all output (stdout + stderr) to a raw log file.
-          #    Run it within an 'if' block to prevent immediate script termination
-          #    if rsync fails. This allows us to process the log file afterwards.
-          if ! rsync --human-readable --itemize-changes --archive --delete --exclude '.git' \
-                      repo_playbooks_stage/ repo_playbooks_main/ > rsync_raw.log 2>&1; then
-              # If rsync fails (exit code non-zero), print the full raw log to the console
-              # immediately so the error is visible.
-              echo "--- rsync failed! Full raw log for inspection: ---"
-              cat rsync_raw.log
-              # Then, exit with the same non-zero status code to fail the GitHub Actions step.
-              exit 1 
+          # Capture the exit code of the rsync command from the subshell
+          # This will be the actual exit code of rsync.
+          RSYNC_EXIT_CODE=$?
+          
+          echo "--- rsync.log content (full) ---"
+          # Display the full rsync.log content
+          cat rsync.log
+          
+          echo "--- rsync.log content (filtered) ---"
+          # Display the filtered rsync.log content as you had it
+          cat rsync.log | grep -v '^>[df]\.\.t\.\.\.\.\.\.' | grep -v '^.[df]\.\.t\.\.\.\.\.\.'
+          
+          echo "--- rsync command finished with exit code $RSYNC_EXIT_CODE ---"
+          
+          # If rsync failed (exit code is not 0), then exit the step with that code.
+          # This will cause the GitHub Action step to fail AFTER the logs have been displayed.
+          if [ $RSYNC_EXIT_CODE -ne 0 ]; then
+            echo "Error: rsync failed! Please review the logs above for detailed error messages."
+            exit $RSYNC_EXIT_CODE
           fi
-
-          # 3. If rsync succeeded, display the FILTERED output to the GitHub Actions console.
-          echo "--- rsync sync summary (filtered) ---"
-          cat rsync_raw.log | \
-            grep -v '^>[df]\.\.t\.\.\.\.\.\.' | \
-            grep -v '^\.[df]\.\.t\.\.\.\.\.\.'
-
-          # 4. Optional: Display the full raw log at the end for complete context (even on success).
-          #    This provides consistency in your logs whether it passes or fails.
-          echo "" 
-          echo "--- Full rsync log (for detailed inspection/debugging) ---"
-          cat rsync_raw.log
 
       - name: Check for changes
         working-directory: repo_playbooks_main
