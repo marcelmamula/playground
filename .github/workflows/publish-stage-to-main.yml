@@ -162,12 +162,12 @@ jobs:
           if [[ "${{ github.event_name }}" == "pull_request" && "${{ github.event.pull_request.merged }}" == "true" ]]; then
             PR_AUTHOR_NAME="${{ github.event.pull_request.user.login }}"
             # Construct a no-reply email for the PR author
-            PR_AUTHOR_EMAIL="${{ github.event.pull_request.user.id }}+${PR_AUTHOR_NAME}@users.noreply.github.com"
+            PR_AUTHOR_EMAIL="${PR_AUTHOR_NAME}@users.noreply.github.com"
             echo "Using PR author: $PR_AUTHOR_NAME <$PR_AUTHOR_EMAIL>"
           else
             # Default to github-actions[bot] for manual triggers or other non-PR scenarios
             PR_AUTHOR_NAME="github-actions[bot]"
-            PR_AUTHOR_EMAIL="41898282+github-actions[bot]@users.noreply.github.com"
+            PR_AUTHOR_EMAIL="github-actions[bot]@users.noreply.github.com"
             echo "Using default author: $PR_AUTHOR_NAME <$PR_AUTHOR_EMAIL>"
           fi
 
