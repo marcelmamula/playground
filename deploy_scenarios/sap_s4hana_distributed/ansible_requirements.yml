@@ -2,7 +2,7 @@
 
 collections:
 
-# This is test
+# This is test 2
 
 # Collections from Ansible Galaxy
   - name: community.general
